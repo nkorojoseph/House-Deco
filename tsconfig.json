@@ -4,6 +4,12 @@
     "lib": [
       "dom",
       "dom.iterable",
+      "es5",
+			"es6",
+			"es7",
+			"es2017",
+			"es2018",
+			"es2019",
       "esnext"
     ],
     "allowJs": true,
@@ -21,6 +27,6 @@
     "jsx": "react-jsx"
   },
   "include": [
-    "src"
+    "src/**/*"
   ]
 }
