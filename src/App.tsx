@@ -13,15 +13,9 @@ import DataFetch from './customHook/DataFetch';
 function App() {
   return (
     <div className="App">
-      {/* <Counter></Counter> */}
-      {/* <SideBar></SideBar>
+      <SideBar></SideBar>
       <Header></Header>
-      <Content/> */}
-      {/* <Counter2/>
-
-      <CounterThree/> */}
-
-      <DataFetch />
+      <Content/>
         
       
     </div>

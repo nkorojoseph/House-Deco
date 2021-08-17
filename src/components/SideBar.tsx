@@ -1,22 +1,35 @@
-import React, { useState} from "react";
+import React, { useState, useReducer} from "react";
 import { useInput } from './../customHook/useInput';
+import useInputReducer from './../customHook/useInputReducer';
 
 
+interface initialState {
+    budget: string;
+    noOfKids: number;
+    noOfAdults: number;
+    confirm: boolean
+}
 
-
-
+const initialState:initialState = {
+        budget:'',
+        noOfKids:0, 
+        noOfAdults: 0,
+        confirm: false
+    }
 
 export const SideBar = ():JSX.Element =>{
-
-
-    const [budget, bindBudget, resetBudget] = useInput(0)
-    const [adults, bindAdults, resetAdults] = useInput(0)
-    const [kids, bindKids, resetKids] = useInput(0)
     
     const handleSummit = (e:any) => {
         e.preventDefault()
-        alert(`${budget} ${adults} ${kids}`)
+        console.log()
+     
     }
+
+    const {formState,handleChange} = useInputReducer(initialState);
+    
+    const {budget, noOfKids, noOfAdults, confirm} = formState
+
+
 
 return(
     <nav className="w3-sidebar w3-light-grey w3-collapse w3-top"  id="mySidebar">
@@ -26,34 +39,41 @@ return(
                 <h3>from $99</h3>
                 <hr/>
                 <form  onSubmit={handleSummit}>
+               
                 <p><label><i className="fa fa-money"></i> Your budget</label></p>
                     <input 
-                        {...bindBudget}
+                        value={budget}
                         className="w3-input w3-border" 
                         type="number" placeholder="Your budget for decoration" 
                         name="budget" 
                         required 
+                        onChange={handleChange}
                     />          
                 <p><label><i className="fa fa-male"></i> Adults</label></p>
                     <input 
-                        {...bindAdults}
+                        value={noOfAdults}
                         title="Number adults in the house" 
                         className="w3-input w3-border" 
                         type="number" 
-                        name="Adults" 
+                        name="noOfAdults" 
                         min="1" 
-                        max="6" 
+                        max="100" 
+                        onChange={handleChange}
                     />              
                 <p><label><i className="fa fa-child"></i> Kids</label></p>
                     <input 
                         title="Number kids in the house" 
                         className="w3-input w3-border" 
                         type="number" 
-                        {...bindKids}
-                        name="Kids" 
+                        value={noOfKids}
+                        name="noOfKids" 
                         min="0" 
-                        max="6" />
-                <p><button className="w3-button w3-block w3-green w3-left-align" type="submit"><i className="fa fa-search w3-margin-right"></i> Search availability</button></p>
+                        max="100"
+                        onChange={handleChange}
+                        />  
+                <p>
+
+                    <button title="Set filter values" className="w3-button w3-block w3-green w3-left-align" type="submit"><i className="fa fa-search w3-margin-right"></i> Set filter</button></p>
                 </form>
             </div>
         <div className="w3-bar-block">
