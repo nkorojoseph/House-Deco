@@ -7,7 +7,6 @@ import livingroom2 from '../images/livingroom2.jpg'
 const logo = require('../images/livingroom2.jpg');
 
 
-
 export const Content = ():JSX.Element => {
 
     const [houseClass, setHouseClass] = useState('')
