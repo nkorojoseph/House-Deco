@@ -12,7 +12,6 @@ import React, {useReducer} from "react";
     const handleChange = (event:any) =>{
         const {name, value, type} = event.target;
       
-
         if (type=="checkbox"){
             dispatch({
                 [name]: !value

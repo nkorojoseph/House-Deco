@@ -22,14 +22,11 @@ export const SideBar = ():JSX.Element =>{
     const handleSummit = (e:any) => {
         e.preventDefault()
         console.log()
-     
     }
 
     const {formState,handleChange} = useInputReducer(initialState);
     
     const {budget, noOfKids, noOfAdults, confirm} = formState
-
-
 
 return(
     <nav className="w3-sidebar w3-light-grey w3-collapse w3-top"  id="mySidebar">
